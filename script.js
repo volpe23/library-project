@@ -23,6 +23,14 @@ myLibrary.push(harryPotter3);
 
 function displayBooks() {
     const container = document.querySelector('.container');
+    const modal = document.querySelector('.modal');
+    const formTrigger = document.createElement('button');
+    formTrigger.textContent = 'Add new book';
+    formTrigger.addEventListener('click', () => {
+        modal.classList.toggle('hidden');
+    });
+    const closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', () => modal.classList.toggle('hidden'));
     container.innerHTML = '';
     myLibrary.forEach((book, i) => {
         const card = document.createElement('div');
@@ -39,11 +47,14 @@ function displayBooks() {
         removeButton.classList.add('remove-button');
         removeButton.addEventListener('click', () => {
             myLibrary.splice(i, 1);
+            modal.classList.toggle('hidden');
             displayBooks();
         });
         card.append(title, author, pages, removeButton);
         container.append(card);
     });
+    
+    container.append(formTrigger);
 }
 
 function getInputs() {

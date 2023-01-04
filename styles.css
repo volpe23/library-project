@@ -21,7 +21,6 @@
 }
 
 main {
-  position: relative;
   background-color: #f6f6f2;
   padding: 25px;
   min-height: calc(100vh - 100px);
@@ -71,20 +70,36 @@ main {
   transition: scale 0.2s ease-in-out;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .modal {
-  width: min(400px, 80vw);
-  border: 2px solid #388087;
-  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+  height: 99vh;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.98) 0%, rgba(36, 56, 58, 0.5882352941) 30%, rgba(104, 106, 119, 0.66) 50%, rgba(33, 34, 48, 0.29) 70%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -70%);
-  background-color: #6fb3b8;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .modal form {
+  padding: 25px;
+  background-color: #6fb3b8;
+  width: min(400px, 90vw);
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 1px 2px 1px darkgray;
   gap: 8px;
+}
+.modal form .close {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 30px;
+  width: 14px;
 }
 .modal form #newBook {
   background-color: #c2edce;

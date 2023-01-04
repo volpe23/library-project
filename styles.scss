@@ -4,8 +4,6 @@ $light-bluegreen: #6fb3b8;
 $light-blue: #badfe7;
 $light-green: #c2edce;
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +25,7 @@ $light-green: #c2edce;
     }
 }
 main {
-    position: relative;
+    // position: relative;
     background-color: $grey;
     padding: 25px;
     min-height: calc(100vh - 100px);
@@ -54,12 +52,13 @@ main {
         .remove-button {
             @extend %buttonstyle;
             background-color: $light-bluegreen;
-        }
-        .remove-button:hover {
-            @extend %buttonhover;
-            background-color: $dark-green;
-            color: white;
-            
+
+            &:hover {
+                @extend %buttonhover;
+                background-color: $dark-green;
+                color: white;
+                
+            }
         }
     }
 }
@@ -80,22 +79,66 @@ main {
     scale: 1.1;
     transition: scale 0.2s ease-in-out;
 }
-
+.hidden {
+    display: none!important;
+}
 .modal {
-    width: min(400px, 80vw);
-    border: 2px solid $dark-green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99vw;
+    height: 99vh;
+    background: radial-gradient(circle, rgb(0 0 0 / 98%) 0%, rgba(36, 56, 58, 0.5882352941) 30%, rgb(104 106 119 / 66%) 50%, rgb(33 34 48 / 29%) 70%, rgba(255, 255, 255, 0) 100%);
+    // border: 2px solid $dark-green;
     // margin-top: 200px;
-    padding: 25px;
     position: absolute;
+    left: 50%;
     top: 50%;
-    left:50%;
-    transform: translate(-50%, -70%);
-    background-color: $light-bluegreen;
+    transform: translate(-50%, -50%);
     form {
+        padding: 25px;
+        background-color: $light-bluegreen;
+        width: min(400px, 90vw);
         display: flex;
         flex-direction: column;
+        box-shadow: 2px 1px 2px 1px darkgray;
+        // transform: translate(-50%, -70%);
         gap: 8px;
 
+        // input[type="checkbox"] {
+        //     position: absolute;
+        //     // opacity: 0;
+        //     cursor: pointer;
+        //     height: 0;
+        //     width: 0;
+        //     &:after{
+        //         appearance: none;
+        //         border: 1px solid black;
+        //     }
+        //     &:checked {
+        //         appearance: none;
+        //         color: red;
+        //     }
+        //     &:checked:before {
+        //         content: "✔";
+        //         color: green;
+
+        //     }
+        // }
+        // #read {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     height: 25px;
+        //     width: 25px;
+        //     background-color: #eee;
+        // }
+        .close {
+            cursor: pointer;
+            margin-left: auto;
+            font-size: 30px;
+            width: 14px;
+        }
         #newBook {
             @extend %buttonstyle;
             background-color: $light-green;
