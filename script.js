@@ -24,7 +24,7 @@ myLibrary.push(harryPotter3);
 function displayBooks() {
     const container = document.querySelector('.container');
     container.innerHTML = '';
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, i) => {
         const card = document.createElement('div');
         card.classList.add('card');
         const title = document.createElement('h3');
@@ -32,8 +32,16 @@ function displayBooks() {
         const author = document.createElement('p');
         author.textContent = book.author;
         const pages = document.createElement('p');
-        pages.textContent = book.pages;
-        card.append(title, author, pages);
+        pages.textContent = `${book.pages} pages`;
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.setAttribute('value', i);
+        removeButton.classList.add('remove-button');
+        removeButton.addEventListener('click', () => {
+            myLibrary.splice(i, 1);
+            displayBooks();
+        });
+        card.append(title, author, pages, removeButton);
         container.append(card);
     });
 }
