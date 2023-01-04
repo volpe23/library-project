@@ -49,20 +49,24 @@ main {
             width: 100%;
             font-size: 2rem;
         }
-        .remove-button {
-            @extend %buttonstyle;
-            background-color: $light-bluegreen;
-
-            &:hover {
-                @extend %buttonhover;
-                background-color: $dark-green;
-                color: white;
-                
-            }
-        }
+    }
+    .remove-button {
+        width: 50%;
+        margin-left: auto;
     }
 }
 
+.remove-button {
+    @extend %buttonstyle;
+    background-color: $light-bluegreen;
+
+    &:hover {
+        @extend %buttonhover;
+        background-color: $dark-green;
+        color: white;
+        
+    }
+}
 %buttonstyle {
     align-self: flex-end;
     padding: 8px;

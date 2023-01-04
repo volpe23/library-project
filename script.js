@@ -26,6 +26,7 @@ function displayBooks() {
     const modal = document.querySelector('.modal');
     const formTrigger = document.createElement('button');
     formTrigger.textContent = 'Add new book';
+    formTrigger.classList.add('remove-button');
     formTrigger.addEventListener('click', () => {
         modal.classList.toggle('hidden');
     });
@@ -47,13 +48,11 @@ function displayBooks() {
         removeButton.classList.add('remove-button');
         removeButton.addEventListener('click', () => {
             myLibrary.splice(i, 1);
-            modal.classList.toggle('hidden');
             displayBooks();
         });
         card.append(title, author, pages, removeButton);
         container.append(card);
     });
-    
     container.append(formTrigger);
 }
 
