@@ -16,7 +16,13 @@ class Book {
         this.read = read;
     }
 
+    get isRead() {
+        return this.read;
+    }
 
+    changeRead() {
+        this.read = !this.read;
+    }
 
 }
 
@@ -55,6 +61,10 @@ function createBookCard (book, i) {
     const read = document.createElement('button');
     read.classList.add('read-button');
     book.read ? (read.textContent = 'Read', read.classList.add('is-read')) : (read.textContent = 'Not read', read.classList.add('not-read'));
+    read.addEventListener('click', () => {
+        book.changeRead();
+        book.read ? (read.textContent = 'Read', read.classList.add('is-read'), read.classList.remove('not-read')) : (read.textContent = 'Not read', read.classList.add('not-read'), read.classList.remove('is-read'));
+    })
 
     togglers.append(read, removeButton);
     card.append(title, author, pages, togglers);
@@ -63,13 +73,18 @@ function createBookCard (book, i) {
 
 function displayBooks() {
     const container = document.querySelector('.container');
+    // const overlay = document.querySelector('.overlay');
+    // const formTrigger = document.createElement('button');
+    // formTrigger.textContent = 'Add new book';
+    // formTrigger.classList.add('remove-button');
+    // formTrigger.addEventListener('click', () => {
+    //     overlay.classList.remove('hidden');
+    // });
     const overlay = document.querySelector('.overlay');
-    const formTrigger = document.createElement('button');
-    formTrigger.textContent = 'Add new book';
-    formTrigger.classList.add('remove-button');
+    const formTrigger = document.querySelector('#formTrigger');
     formTrigger.addEventListener('click', () => {
         overlay.classList.remove('hidden');
-    });
+    })
     const closeButton = document.querySelector('.close');
     closeButton.addEventListener('click', () => overlay.classList.add('hidden'));
     // overlay.addEventListener('click', () => overlay.classList.toggle('hidden'));
@@ -109,5 +124,6 @@ newBookButton.addEventListener('click', (event) => {
     clearInputs();
     displayBooks();
 });
+
 
 displayBooks();
